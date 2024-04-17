@@ -952,11 +952,14 @@ const getBpData = (csvid) => {
 
 const addShinsuiForBpLayer = (bp) => {
   
+  const scaleList = {"0":"L2", "1":"L1", "-1":"L1b"};
+  
   const p = bp.properties;
   const subRiverCode = (p.SubRiverCode == "_") ? "" : p.SubRiverCode;
+  const scale = scaleList[`${p.CSVScale}`];
   const exRiverCode = p.RiverCode + subRiverCode;
   const tileUrl = `https://suiboumap.gsi.go.jp/shinsuimap/Tile/`
-        + `${p.OfficeCode}/L2/${exRiverCode}/${p.BPName}/${p.BPName}_MAX/overlayer/{z}/{x}/{y}.png`
+        + `${p.OfficeCode}/${scale}/${exRiverCode}/${p.BPName}/${p.BPName}_MAX/overlayer/{z}/{x}/{y}.png`
   
   if(map.getLayer("river-raster-shinsui-rank-for-bp")){
     map.removeLayer("river-raster-shinsui-rank-for-bp");
