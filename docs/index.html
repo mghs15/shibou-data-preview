@@ -537,12 +537,13 @@ const makeFilter = () => {
       if(word.match(/(\s|　)/)) return;
       filter.push(["in", word, [
         "concat", //"coalesce", 
-        ["get", "OfficeCode"],
-        ["get", "OfficeName"],
-        ["get", "GroupName"],
-        ["get", "RiverCode"],
-        ["get", "EntryRiverName"],
-        ["get", "DrainageSystem"],
+        ["get", "OfficeName"], "-",
+        ["get", "GroupName"], "-",
+        ["get", "DrainageSystem"], "-",
+        ["get", "sname"], "-",
+        ["get", "OfficeCode"], "-",
+        ["get", "RiverCode"], "-",
+        ["get", "EntryRiverName"], "-",
         ""
      ]]);
     });
